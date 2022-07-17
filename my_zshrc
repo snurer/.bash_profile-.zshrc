@@ -1,0 +1,51 @@
+## gpush 
+gpush () {
+  ## pulling latest changes
+  git pull || { echo 'not a git repository (or any of the parent directories)'; sleep 1000; }
+
+  ## conventional prefix options
+  echo "Commit Conventional Messages"
+  echo "1 - feat"
+  echo "2 - fix"
+  echo "3 - chore"
+  echo "4 - test"
+  read commit;
+  case $commit in
+    1) commit="feat:";;
+    2) commit="fix:";;
+    3) commit="chore:";;
+    4) commit="test: ";;
+    *) echo "This commit -m is not available. Please choose a different one.";; 
+  esac
+
+  read -p "enter commit message: " commit_message
+  git add $(pwd)
+  git commit -m "$commit $commit_message"
+  git push origin $(git rev-parse --abbrev-ref HEAD)
+}
+
+function mkcd() {
+    mkdir -p $1
+    cd $1
+}
+
+
+## some alias commands
+alias 'c=clear'
+alias today="echo $(date | awk '{ print $1 }')"
+alias hs="history | grep"
+alias getssh="cat ~/.ssh/id_rsa.pub"
+
+## Git Aliases ##
+alias gcl="git clone"
+alias gp="git push"
+alias gcm="git commit -m"
+alias gb="git branch"
+alias gco="git checkout"
+
+## Count number of files in a directory ##
+
+function numfiles() { 
+    N="$(ls $1 | wc -l)"; 
+    echo "$N files in $1";
+}
