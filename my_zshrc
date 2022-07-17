@@ -5,15 +5,15 @@ gpush () {
 
   ## conventional prefix options
   echo "Commit Conventional Messages"
-  echo "1 - feat"
-  echo "2 - fix"
-  echo "3 - chore"
+  echo "1 - added"
+  echo "2 - modified"
+  echo "3 - updated"
   echo "4 - test"
   read commit;
   case $commit in
-    1) commit="feat:";;
-    2) commit="fix:";;
-    3) commit="chore:";;
+    1) commit="added:";;
+    2) commit="modified:";;
+    3) commit="updated:";;
     4) commit="test: ";;
     *) echo "This commit -m is not available. Please choose a different one.";; 
   esac
