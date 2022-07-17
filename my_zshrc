@@ -24,13 +24,14 @@ gpush () {
   git push origin $(git rev-parse --abbrev-ref HEAD)
 }
 
+## Create folder and cd into it
+
 function mkcd() {
     mkdir -p $1
     cd $1
 }
 
-
-## some alias commands
+## some useful alias commands
 alias 'c=clear'
 alias today="echo $(date | awk '{ print $1 }')"
 alias hs="history | grep"
