@@ -50,3 +50,10 @@ function numfiles() {
     N="$(ls $1 | wc -l)"; 
     echo "$N files in $1";
 }
+
+## Find all files with specific size and delete them.
+
+function findel() {
+    find / -type f -size +$1 -exec rm -f {} \;
+    echo "deleted all files with more than $1 size"
+}
